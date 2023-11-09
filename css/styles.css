@@ -8,6 +8,10 @@
     --cloud: #f4f4fd;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: "Roboto", sans-serif;
     margin: 0;
@@ -96,10 +100,6 @@ body {
 /*END OF GENERAL STYLING*/
 
 /*HEADER STYLING*/
-.header {
-    justify-content: space-around;
-    align-items: center;
-}
 
 .header .d-flex {
     align-items: center;
@@ -109,12 +109,48 @@ body {
     gap: 40px;
 }
 
+.header-container {
+    display: flex;
+    align-items: center;
+}
+
 .logo {
     margin-right: 76px;
 }
 
 .logo-studio-nav {
     color: var(--navyblue);
+}
+
+.desktop-contacts {
+    margin-left: auto;
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.mobile-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 15px;
+}
+
+.mobile-menu-container {
+    position: relative;
+    height: 100%;
+    padding: 40px;
+}
+
+.mobile-navbar {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.mobile-menu {
+    display: none;
+    position: relative;
 }
 
 .nav-link {
@@ -166,7 +202,7 @@ body {
     font-weight: 700;
     line-height: 60px; /* 107.143% */
     letter-spacing: 1.12px;
-    text-transform: uppercase;
+    text-transform: capitalize;
 }
 
 .hero-btn {
@@ -207,7 +243,8 @@ body {
     opacity: 0;
 }
 
-.modal-close-btn {
+.modal-close-btn,
+.js-close-menu {
     border-radius: 100%;
     border: 1px solid rgba(0, 0, 0, 0.1);
     background-color: white;
@@ -390,9 +427,10 @@ body {
 
 .customer-icon {
     border: 1px solid #8e8f99;
-    padding: 16px 32px;
+    padding: 16px 0;
     flex-basis: calc(100% / 2 - 30px);
     text-align: center;
+    border-radius: 4px;
 }
 
 .customer-icon svg {
@@ -461,7 +499,20 @@ body {
 }
 
 .footer {
-    padding: 120px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    text-align: center;
+}
+
+.footer .logo {
+    margin-right: 0;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 72px;
 }
 
 .footer-text {
@@ -476,11 +527,11 @@ body {
 }
 
 .footer-social {
-    margin-left: 120px;
+    /* margin-left: 120px; */
 }
 
 .footer-sub {
-    margin-left: 80px;
+    /* margin-left: 80px; */
 }
 
 .footer .team-socials-icon {
@@ -498,9 +549,10 @@ body {
     background: none;
     border-radius: 4px;
     padding: 10px;
-    width: 264px;
+    width: -webkit-fill-available;
     background-color: none;
-    margin-right: 24px;
+    /* margin-right: 24px; */
+    margin-bottom: 24px;
 }
 
 .input-sub::placeholder {
@@ -533,6 +585,12 @@ body {
 
 @media (min-width: 768px) {
     /* 768px to 1199px */
+
+    .mobile-nav,
+    .js-close-menu {
+        display: none;
+    }
+
     .container {
         width: 768px;
     }
@@ -545,9 +603,23 @@ body {
     .customer-icon {
         flex-basis: calc(100% / 3 - 30px);
     }
+
+    .footer {
+        text-align: center;
+    }
+
+    .input-sub {
+        width: 264px;
+        margin-right: 24px;
+    }
 }
 
 @media (min-width: 1200px) {
+    .desktop-contacts {
+        display: flex;
+        column-gap: 30px;
+    }
+
     .container {
         width: 1200px;
     }
@@ -559,5 +631,65 @@ body {
 
     .customer-icon {
         flex-basis: calc(100% / 6 - 30px);
+    }
+}
+
+@media (max-width: 767px) {
+    .desktop-nav {
+        display: none;
+    }
+
+    .mobile-menu.is-open {
+        transform: translateX(0);
+    }
+
+    .js-close-menu {
+        position: absolute;
+        top: 10px;
+        right: 25px;
+    }
+
+    .mobile-menu {
+        top: 0;
+        display: block;
+        height: 100vh;
+        width: 100%;
+        position: fixed;
+        background-color: white;
+        transform: translateX(100%);
+        transition: transform 250ms ease-in-out;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .what-we-do {
+        display: none;
+    }
+
+    .about-item h3 {
+        font-size: 36px;
+        margin-bottom: 8px;
+    }
+    .about-item p {
+        margin-top: 0;
+    }
+
+    .about-icon {
+        display: none;
+    }
+
+    .footer-inner {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 427px) {
+    .hero-text {
+        font-size: 36px;
+        letter-spacing: 0.72px;
+        line-height: 1.11;
+    }
+
+    .about-item h3 {
+        text-align: center;
     }
 }

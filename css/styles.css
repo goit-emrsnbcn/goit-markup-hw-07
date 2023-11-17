@@ -153,6 +153,30 @@ body {
     position: relative;
 }
 
+.mobile-links {
+    list-style-type: none;
+}
+
+.mobile-link {
+    font-size: 36px;
+    text-decoration: none;
+    font-weight: 700;
+    color: var(--navyblue);
+    margin-bottom: 40px;
+    display: inline-block;
+}
+
+.mobile-contact {
+    color: var(--navyblue);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 48px;
+}
+
+.mobile-link.mobile-active {
+    color: var(--ocean);
+}
+
 .nav-link {
     font-weight: 500;
     line-height: 1.5; /* 150% */
@@ -193,6 +217,8 @@ body {
     padding-top: 188px;
     padding-bottom: 188px;
     text-align: center;
+    background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 46, 66, 0.7)), url("../images/people-office-1.jpg");
+    background-size: cover;
 }
 
 .hero-text {
